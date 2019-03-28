@@ -51,10 +51,11 @@ services:
     image: redis:3.2
     networks:
       - fila
-
   worker:
     image: python:3.6
     volumes:
       - ./worker:/worker
-    working_dir: worker
+    working_dir: /worker
     command: bash ./app.sh
+    networks:
+      - fila
